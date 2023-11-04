@@ -1,0 +1,18 @@
+App Web
+-----------------------------------------------------------------------
+GET: http://localhost:8080/productos/all  
+GET: http://localhost:8080/productos/get?id=50
+POST: http://localhost:8080/productos/grabar
+POST: http://localhost:8080/productos/actualizar
+GET: http://localhost:8080/productos/eliminar?id=50
+
+
+
+App REST
+-----------------------------------------------------------------------
+GET: http://localhost:8080/productos
+GET: http://localhost:8080/productos/50 
+POST: http://localhost:8080/productos
+PUT: http://localhost:8080/productos
+PATCH: http://localhost:8080/productos
+DELETE: http://localhost:8080/productos
