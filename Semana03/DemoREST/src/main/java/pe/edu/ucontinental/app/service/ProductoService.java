@@ -71,4 +71,23 @@ public class ProductoService {
 		return obj;
 	}
 
+	public void delete(Integer id) {
+		for(ProductoDto bean: productos) {
+			if(bean.getId() == id) {
+				productos.remove(bean);
+				break;
+			}
+		}
+	}
+
+	public List<ProductoDto> get(Double minPrecio, Double maxPrecio) {
+		List<ProductoDto> lista2 = new ArrayList<>();
+		for(ProductoDto bean: productos) {
+			if(bean.getPrecio() >= minPrecio && bean.getPrecio() <= maxPrecio) {
+				lista2.add(bean);
+			}
+		}
+		return lista2;
+	}
+
 }
