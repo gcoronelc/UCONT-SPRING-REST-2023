@@ -38,5 +38,37 @@ public class ProductoService {
 		}
 		return dto;
 	}
+	
+	public ProductoDto create(ProductoDto dto) {
+		dto.setId(++contador);
+		productos.add(dto);
+		return dto;
+	}
+
+	public ProductoDto update(ProductoDto dto) {
+		ProductoDto obj = null;
+		for(ProductoDto bean: productos) {
+			if(bean.getId() == dto.getId()) {
+				bean.updateData(dto);
+				obj = bean;
+				break;
+			}
+		}
+		return obj;
+	}
+
+	public ProductoDto updatePartial(ProductoDto dto) {
+		ProductoDto obj = null;
+		for(ProductoDto bean: productos) {
+			if(bean.getId() == dto.getId()) {
+				if(!dto.getNombre().isBlank()) bean.setNombre(dto.getNombre());
+				if(dto.getPrecio()!=null) bean.setPrecio(dto.getPrecio());
+				if(dto.getStock()!=null) bean.setStock(dto.getStock());
+				obj = bean;
+				break;
+			}
+		}
+		return obj;
+	}
 
 }

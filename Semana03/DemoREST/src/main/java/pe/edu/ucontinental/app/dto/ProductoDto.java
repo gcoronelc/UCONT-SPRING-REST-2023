@@ -9,8 +9,12 @@ public class ProductoDto {
 	
 	private Integer id;
 	private String nombre;
-	private double precio;
+	private Double precio;
 	private Integer stock;
 	
-	
+	public void updateData(ProductoDto source) {
+		this.nombre = source.getNombre();
+		this.precio = source.getPrecio();
+		this.stock = source.getStock();
+	}
 }
