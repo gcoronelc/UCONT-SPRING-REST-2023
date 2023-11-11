@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>LISTADO</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>PRECIO</th>
+                <th>STOCK</th>
+            </tr>
+        </thead>
+        <tbody id="listaProductos"></tbody>
+    </table>
+    <SCRipt src="jquery-3.7.1.min.js"></SCRipt>
+    <script>
+        
+        $(function() {
+            $.ajax({
+                url:"http://localhost:8080/productos",
+                type:"GET",
+                success:function(data){
+                    console.log(data);
+                    let html = "";
+                    $.each(data,function(index,rec){
+                        html += "<tr>";
+                        html += "<td>" + rec.id + "</td>";
+                        html += "<td>" + rec.nombre + "</td>";
+                        html += "<td>" + rec.precio + "</td>";
+                        html += "<td>" + rec.stock + "</td>";
+                        html += "</tr>";
+                    });
+                    $("#listaProductos").append(html);
+                },
+                error:function(error){
+                    console.log(error);
+                }
+            });
+        });
+
+
+    </script>
+</body>
+</html>
