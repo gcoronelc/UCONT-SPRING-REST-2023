@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CREAR RECURSO</h1>
+    <form>
+        <div>
+            <label>Nombre:</label>
+            <input type="text" id="nombre">
+        </div>
+        <div>
+            <label>Precio:</label>
+            <input type="text" id="precio">
+        </div>
+        <div>
+            <label>Stock:</label>
+            <input type="text" id="stock">
+        </div>
+        <div>
+            <input type="button" id="btnProcesar" value="Procesar">
+        </div>
+    </form>
+
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+         $(function() {
+            
+            $("#btnProcesar").click(fnBtnProcesar);
+         });
+
+         function fnBtnProcesar(){
+            let nombre = $("#nombre").val();
+            let precio = $("#precio").val();
+            let stock = $("#stock").val();
+            let data = {"nombre":nombre,"precio":precio,"stock":stock};
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/productos",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+         }
+    </script>
+</body>
+</html>
